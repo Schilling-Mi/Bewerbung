@@ -1,0 +1,466 @@
+/* Gesamte Seite mit Hintergrundbild */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(pexels-philippedonn-1169754.jpg);  /* dein Bild im Ordner */
+  background-size: cover;               /* Bild füllt den ganzen Bildschirm */
+  background-position: center;
+ 
+  height: 100vh;
+  font-family: Arial, sans-serif;       /* einfache Standardschrift */
+  color: white;                         /* weiße Schrift für besseren Kontrast */
+}
+
+
+/* Glasiger Header-Container */
+.glass-header {
+  width: 100%;
+  padding: 40px 0;
+  background: rgba(255, 255, 255, 0.02 );         /* halb durchsichtig weiß */
+  backdrop-filter: blur(2px);                  /* Glas-Effekt */
+  -webkit-backdrop-filter: blur(20px);          /* für Safari */
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Leuchtender Name mit Farbwechsel */
+.glow-text {
+  font-size: 3em;
+  font-weight: bold;
+  background: linear-gradient(
+    270deg,
+    #00f,     /* Blau */
+    #8a2be2,  /* Violett */
+    #ff1493,  /* Pink */
+    #00ffff   /* Cyan */
+  );
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowColor 6s ease infinite;
+}
+
+/* Farbverlauf-Animation */
+@keyframes glowColor {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+
+}
+
+
+/* Navbar Grundstruktur */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+}
+
+/* Burger Menü */
+.menu-toggle {
+  display: none;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Navbar Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background-color: darkblue;
+  transition: width 0.4s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.nav-links li a:hover {
+  color: blue;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+
+
+#daten {
+  margin-top: 180px;
+  padding: 30px 40px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.08); /* halb durchsichtiges Weiß */
+  border: 2px solid rgba(0, 174, 255, 0.2); /* leichte blaue Umrandung */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(0, 174, 255, 0.3); /* blauer Schein */
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  animation: glowBorder 2s infinite alternate;
+}
+
+#daten h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 30px;
+  color: #00bfff;
+}
+
+#daten ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#daten li {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+/* Animation: Umrandung leuchtet leicht */
+@keyframes glowBorder {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 174, 255, 0.3);
+    border-color: rgba(0, 174, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 174, 255, 0.6);
+    border-color: rgba(0, 174, 255, 0.6);
+  }
+}
+
+
+#hobbys {
+  margin-top: 350px;
+  text-align: center;
+}
+
+#hobbys h2 {
+  color: #C715E3; /* Lila */
+  font-size: 32px;
+  text-shadow: 0 0 12px rgba(199, 21, 227, 0.8);
+  margin-bottom: 40px;
+}
+
+.hobby-icons {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.hobby {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hobby img {
+  width: 90px;
+  height: 90px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid #C715E3;
+  border-radius: 50%;
+  filter: brightness(0) invert(1); /* macht das Icon weiß */
+  box-shadow: 0 0 12px rgba(199, 21, 227, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.hobby img:hover {
+  transform: scale(1.1);
+}
+
+.hobby span {
+  margin-top: 10px;
+  color: white;
+  font-size: 1.1rem;
+}
+
+
+
+
+
+#sprachen {
+  margin-top: 350px;
+  text-align: center;
+}
+
+#sprachen h2 {
+  color: white;
+  font-size: 32px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 40px;
+}
+
+.language-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.language {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.language img {
+  width: 80px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.language span {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: white;
+}
+
+
+#portfolio {
+  margin-top: 350px;
+  text-align: center;
+}
+
+#portfolio h2 {
+  color: #00aaff;
+  font-size: 32px;
+  text-shadow: 0 0 15px rgba(0, 170, 255, 0.8);
+  margin-bottom: 40px;
+}
+
+/* Vorschau */
+.preview-box {
+  width: 90%;
+  max-width: 700px;
+  height: 400px;
+  margin: 0 auto 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+  background: rgba(10, 10, 10, 0.95);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.preview-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.close-preview {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Galerie */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.carousel-box {
+  position: relative;
+  width: 90%;
+  max-width: 700px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  scroll-behavior: smooth;
+}
+
+.carousel-img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.carousel-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  color: #00aaff;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+/* Kenntnisse Section */
+#kenntnisse {
+  margin-top: 120px;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.kenntnisse-title {
+  font-size: 40px;
+  color: red;
+  text-shadow: 0 0 10px red, 0 0 20px red;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.kenntnisse-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 40px;
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.kenntnisse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: center;
+}
+
+.kenntnis {
+  text-align: center;
+  color: red;
+  text-shadow: 0 0 8px red;
+}
+
+.kenntnis i {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+/* ⭐ Media Query für kleine Bildschirme */
+@media (max-width: 768px) {
+  #uebermich {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #uebermich img {
+    margin-bottom: 20px;
+  }
+}
+
+/* Planeten-Animation */
+.planet {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.planet1 {
+  width: 20px;
+  height: 20px;
+  background-color: darkblue;
+  animation: orbit1 6s linear infinite;
+}
+
+.planet2 {
+  width: 15px;
+  height: 15px;
+  background-color: darkred;
+  animation: orbit2 10s linear infinite;
+}
+
+.planet3 {
+  width: 10px;
+  height: 10px;
+  background-color: darkgreen;
+  animation: orbit3 14s linear infinite;
+}
+
+@keyframes orbit1 {
+  0%   { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+
+@keyframes orbit2 {
+  0%   { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+}
+
+@keyframes orbit3 {
+  0%   { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Schilling</title>
+
+  <!-- Verknüpfung mit CSS-Datei -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Bootstrap (optional, für Navbar später) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+
+<!-- Header mit Glas-Effekt -->
+<header class="glass-header">
+  <h1 class="glow-text">Michael Schilling</h1>
+</header>
+
+
+
+
+<!-- Navbar -->
+<nav class="sticky-nav">
+  <div class="menu-toggle">☰ Menü</div>
+  <ul class="nav-links">
+    <li><a href="#daten">Daten</a></li>
+    <li><a href="#hobbys">Hobbys</a></li>
+    <li><a href="#sprachen">Sprachen</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#kenntnisse">Kenntnisse</a></li>
+    <li><a href="#ueber-mich">Über mich</a></li>
+  </ul>
+</nav>
+
+
+<script>
+
+// Burger-Menü-Funktion
+const toggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+
+</script>
+
+
+<section id="daten" class="glass-box">
+  <h2>Daten</h2>
+  <ul>
+    <li><strong>Name:</strong> Michael Schilling</li>
+    <li><strong>Geburtstag - Ort:</strong> 19.08.2000 in Laupheim</li>
+    <li><strong>Adresse:</strong> Hauptstr. 14</li>
+    <li><strong>Wohnort:</strong> 88525 Dürmentingen</li>
+    <li><strong>Familienstand:</strong> Verheiratet</li>
+    <li><strong>Kinder:</strong> eine Tochter (5 Jahre)</li>
+  </ul>
+</section>
+
+
+
+ <section id="hobbys">
+  <h2>Hobbys</h2>
+  <div class="hobby-icons">
+    <div class="hobby">
+      <img src="icons/pull-up-icon-3617585-512.png" alt="Calisthenics">
+      <span>Calisthenics</span>
+    </div>
+    <div class="hobby">
+      <img src="icons/soccer-ball-icon-56921-512.png" alt="Fußball">
+      <span>Fußball</span>
+    </div>
+    <div class="hobby">
+      <img src="icons/boxing-gloves-icon-1316800-512.png" alt="Kampfsport">
+      <span>Kampfsport</span>
+    </div>
+    <div class="hobby">
+      <img src="icons/chess-pieces-icon-324428-512.png" alt="Schach">
+      <span>Schach</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="sprachen">
+  <h2>Sprachen</h2>
+  <div class="language-list">
+    <div class="language">
+      <img src="flaggen/de.svg" alt="Deutsch">
+      <span>Deutsch (in Wort und Schrift)</span>
+    </div>
+    <div class="language">
+      <img src="flaggen/gb.svg" alt="Englisch">
+      <span>Englisch (in Wort und Schrift)</span>
+    </div>
+    <div class="language">
+      <img src="flaggen/ru.svg" alt="Russisch">
+      <span>Russisch (Muttersprache)</span>
+    </div>
+    <div class="language">
+      <img src="flaggen/al.svg" alt="Albanisch">
+      <span>Albanisch (Anfänger)</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="portfolio">
+  <h2>Portfolio / Zertifikate</h2>
+
+  <!-- Vorschau Großbild -->
+  <div id="preview-box" class="preview-box hidden">
+    <span id="preview-close" class="close-preview">&times;</span>
+    <img id="preview-img" src="" alt="Großansicht">
+  </div>
+
+  <!-- Galerie mit Karussell -->
+  <div class="carousel-wrapper">
+    <button class="carousel-btn" id="prevBtn">&#10094;</button>
+
+    <div class="carousel-box" id="carousel-box">
+      <img src="portfolio/zertifikat.jpg" alt="Urkunde 1" class="carousel-img">
+      <img src="portfolio/bildschirmfoto.jpg" alt="Urkunde 2" class="carousel-img">
+    </div>
+
+    <button class="carousel-btn" id="nextBtn">&#10095;</button>
+  </div>
+</section>
+
+
+<script>
+  const images = document.querySelectorAll(".carousel-img");
+  const previewBox = document.getElementById("preview-box");
+  const previewImg = document.getElementById("preview-img");
+  const closeBtn = document.getElementById("preview-close");
+
+  const carouselBox = document.getElementById("carousel-box");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let index = 0;
+
+  function showImage(i) {
+    carouselBox.scrollTo({
+      left: carouselBox.clientWidth * i,
+      behavior: 'smooth'
+    });
+  }
+
+  prevBtn.onclick = () => {
+    index = (index - 1 + images.length) % images.length;
+    showImage(index);
+  };
+
+  nextBtn.onclick = () => {
+    index = (index + 1) % images.length;
+    showImage(index);
+  };
+
+  images.forEach((img, i) => {
+    img.addEventListener("click", () => {
+      previewImg.src = img.src;
+      previewBox.classList.remove("hidden");
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    previewBox.classList.add("hidden");
+  });
+</script>
+
+
+
+
+
+<!-- Kenntnisse Section -->
+<section id="kenntnisse">
+  <div class="kenntnisse-container">
+    <h2 class="kenntnisse-title">Kenntnisse</h2>
+    <div class="kenntnisse-grid">
+      <div class="kenntnis">
+        <i class="fab fa-html5"></i>
+        <p>HTML</p>
+      </div>
+      <div class="kenntnis">
+        <i class="fab fa-css3-alt"></i>
+        <p>CSS</p>
+      </div>
+      <div class="kenntnis">
+        <i class="fab fa-js-square"></i>
+        <p>JavaScript</p>
+      </div>
+      <div class="kenntnis">
+        <i class="fab fa-bootstrap"></i>
+        <p>Bootstrap</p>
+      </div>
+      <div class="kenntnis">
+        <i class="fas fa-database"></i>
+        <p>MySQL</p>
+      </div>
+      <div class="kenntnis">
+        <i class="fab fa-php"></i>
+        <p>PHP</p>
+      </div>
+      <div class="kenntnis">
+        <i class="fas fa-globe"></i>
+        <p>SEO</p>
+      </div>
+      <div class="kenntnis">
+        <i class="fab fa-wordpress-simple"></i>
+        <p>WordPress</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="ueber-mich" style="margin-top: 350px; display: flex; align-items: center; justify-content: center; color: white;">
+  <div style="display: flex; align-items: center; background: rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(10px); padding: 40px; box-shadow: 0 0 20px rgba(255,255,255,0.2); max-width: 1000px;">
+
+    <!-- Profilbild mit animierten Planeten -->
+    <div style="position: relative; width: 250px; height: 250px; margin-right: 40px;">
+      <img src="bild.jpg" alt="Michael Schilling" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 0 20px white;">
+      <div class="planet planet1"></div>
+      <div class="planet planet2"></div>
+      <div class="planet planet3"></div>
+    </div>
+
+    <!-- Textbereich -->
+    <div style="max-width: 600px;">
+      <h2 style="text-align: center; color: white; font-size: 2.5rem; margin-bottom: 20px; text-shadow: 0 0 10px white;">Über mich</h2>
+      <p style="font-size: 1.1rem; line-height: 1.7;">
+        Ich bin eine offene, humorvolle und zielstrebige Persönlichkeit mit einem klaren Ziel vor Augen: Ich will in der Welt der Web- und App-Entwicklung nicht nur mitspielen, sondern Maßstäbe setzen.
+        <br><br>
+        Nach einem intensiven 30-Stunden-Kurs, in dem ich mir fundierte Kenntnisse in HTML, CSS, JavaScript, jQuery, Bootstrap und vielem mehr angeeignet habe, brenne ich darauf, diese Fähigkeiten in der Praxis umzusetzen. Ich lerne extrem schnell, eigne mir Neues in rasantem Tempo an und liebe es, kreative Ideen in funktionierenden Code zu verwandeln. 
+        <br><br>
+        Disziplin, Ehrgeiz und ein unerschütterlicher Wille zur Weiterentwicklung treiben mich jeden Tag an. Aktuell bilde ich mich bereits eigeninitiativ mit einem Kurs in Flutter und Dart weiter, um den nächsten Schritt in der App-Entwicklung zu gehen.
+        <br><br>
+        Ich bin fest entschlossen, mein gesamtes Talent in diesen Bereich zu investieren. Ich sehe meine Zukunft in der digitalen Entwicklung – nicht nur als Beruf, sondern als Berufung. Mein Ziel: Etwas Großes zu erschaffen, meine Kreativität voll auszuleben und damit langfristig meine Familie zu versorgen.
+        <br><br>
+        Ich bin bereit. Für jede Herausforderung, jede Weiterbildung und für jedes Projekt, das echtes Engagement und Vision erfordert.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<footer style="margin-top: 50px; padding: 20px 40px; background-color: rgba(255,255,255,0.05); backdrop-filter: blur(8px); display: flex; justify-content: space-between; align-items: center; color: white; border-top: 1px solid rgba(255,255,255,0.2);">
+
+  <!-- Links: Name -->
+  <div style="font-weight: bold; font-size: 1.1rem;">
+    Michael Schilling
+  </div>
+
+  <!-- Mitte: Kontaktinfos -->
+  <div style="text-align: center; font-size: 0.95rem;">
+    E-Mail: <a href="mailto:Schilling.michi@icloud.com" style="color: lightblue; text-decoration: none;">Schilling.michi@icloud.com</a><br>
+    Handy: <a href="tel:+491624319166" style="color: lightblue; text-decoration: none;">0162 4319166</a>
+  </div>
+
+  <!-- Rechts: YouTube -->
+  <div>
+    <a href="https://youtube.com/@coachm24?si=CJXSKW2Q58DN9U_c" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" style="width: 30px; height: 30px; filter: drop-shadow(0 0 4px red);">
+    </a>
+  </div>
+
+</footer>
+
+
+</body>
+</html>
